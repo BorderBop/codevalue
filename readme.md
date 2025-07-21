@@ -1,7 +1,15 @@
 # Automation Project
 
 ## Overview
-This project is a sample FastAPI backend with a full suite of automated tests and performance checks. It demonstrates best practices for structuring, testing, and load-testing Python web applications.
+This repository is a demonstration project for automated testing in Python. It implements a simple FastAPI backend and showcases a complete testing strategy, including:
+- **Unit tests** for business logic and data validation
+- **Integration tests** for API and database interaction
+- **API/Contract tests** for OpenAPI schema and endpoint compliance
+- **Mock tests** for simulating server responses and error handling
+- **End-to-end (e2e) tests** for black-box system validation
+- **Performance (load) tests** using Locust for load simulation
+
+The project is designed for educational, interview, and demo purposes. It provides clear examples of how to structure, write, and run different types of automated tests for a Python web application using FastAPI, pytest, httpx, and Locust.
 
 ---
 
@@ -128,7 +136,19 @@ codevalue/
 
 ---
 
-## 5. Notes
+## 5. The Importance of Negative Tests
+
+Negative tests (testing invalid input, error conditions, and edge cases) are critical for robust automated testing. They ensure that your application:
+- Handles invalid or unexpected data gracefully
+- Returns correct error codes and messages
+- Prevents security issues and data corruption
+- Remains stable and predictable under all circumstances
+
+By including negative tests for every endpoint and business rule, you can be confident that your system not only works when everything is correct, but also fails safely and informatively when something goes wrong.
+
+---
+
+## 6. Notes
 - All tests can be run from the project root.
 - For integration and e2e tests, make sure the server and DB are available.
 - For performance tests, always start the server separately.

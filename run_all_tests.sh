@@ -12,7 +12,7 @@ if [ -n "$PID" ]; then
 fi
 
 # Start FastAPI server in background
-cd backend
+cd automation
 source venv/bin/activate
 uvicorn server.backend:app --port $PORT --reload &
 SERVER_PID=$!
@@ -22,7 +22,7 @@ cd ..
 sleep 2
 
 # Run all tests
-pytest
+pytest automation/tests
 TEST_RESULT=$?
 
 # Stop the server

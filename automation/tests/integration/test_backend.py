@@ -1,11 +1,11 @@
 import pytest
 import pytest_asyncio
 from httpx import AsyncClient, ASGITransport
-from backend.server.backend import app
+from automation.server.backend import app
 from uuid import uuid4
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.server.backend import Base
+from automation.server.backend import Base
 import asyncio
 
 DATABASE_URL = "sqlite:///./library.db"

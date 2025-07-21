@@ -1,6 +1,6 @@
 import pytest
 from httpx import AsyncClient, ASGITransport
-from backend.server.backend import app
+from automation.server.backend import app
 
 @pytest.mark.asyncio
 async def test_openapi_schema_contains_endpoints():

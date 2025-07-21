@@ -1,5 +1,5 @@
 import pytest
-from backend.server.backend import BookCreate, BookUpdate, UserCreate, Book, User
+from automation.server.backend import BookCreate, BookUpdate, UserCreate, Book, User
 from pydantic import ValidationError
 
 def test_book_create_valid():

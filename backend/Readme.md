@@ -1,4 +1,9 @@
-# Library Backend API
+# Test Backend Server
+
+This is a lightweight backend server built for a sample library application.  
+It was created specifically for testing purposes to validate the functionality and robustness of the testing system.
+
+Feel free to explore, run tests, and adapt it to your needs.
 
 ## Requirements
 - Python 3.8+

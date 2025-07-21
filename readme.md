@@ -1,39 +1,138 @@
-# Automation
+# Automation Project
 
-## Project Structure
-
-- `automation/server/backend.py` — main FastAPI app and models
-- `requirements.txt` — dependencies
-- `library.db` — SQLite database
-- `automation/tests/` — all test code (unit, integration, API/contract, mocks, e2e)
-
-## How to Run Tests
-
-1. **Install dependencies:**
-   ```
-   pip install -r automation/requirements.txt
-   ```
-2. **Run all tests:**
-   ```
-   pytest automation/tests/
-   ```
-3. **Run only a specific type of tests:**
-   ```
-   pytest automation/tests/unit
-   pytest automation/tests/integration
-   pytest automation/tests/api
-   pytest automation/tests/mocks
-   pytest automation/tests/e2e
-   ```
-
-## Test Types
-
-- **Unit tests:** Test individual functions/classes in isolation (no DB, no FastAPI app).
-- **Integration tests:** Test FastAPI app with real DB, using httpx.AsyncClient + ASGITransport.
-- **API/Contract tests:** Check OpenAPI schema and endpoint compliance.
-- **Mock tests:** Use httpx.MockTransport to test client logic and error handling.
-- **E2E tests:** (Optional) Test the app as a black box, possibly with real HTTP server and DB.
+## Overview
+This project is a sample FastAPI backend with a full suite of automated tests and performance checks. It demonstrates best practices for structuring, testing, and load-testing Python web applications.
 
 ---
 
-See the `automation/tests/` directory for examples and details.
+## 1. Installation
+
+### 1.1. Clone the repository
+```
+git clone <your-repo-url>
+cd codevalue
+```
+
+### 1.2. Create and activate a virtual environment
+```
+python3 -m venv automation/venv
+source automation/venv/bin/activate
+```
+
+### 1.3. Install dependencies
+```
+pip install -r automation/requirements.txt
+```
+
+### 1.4. (Optional) Install Locust for performance testing
+```
+pip install locust
+```
+
+---
+
+## 2. Project Structure
+
+```
+codevalue/
+  automation/
+    server/           # FastAPI app and models
+    tests/
+      unit/           # Unit tests (pure Python logic, no DB or HTTP)
+      integration/    # Integration tests (real DB, FastAPI app, httpx)
+      api/            # API/contract tests (OpenAPI schema, endpoint checks)
+      mocks/          # Mock tests (httpx.MockTransport, error handling)
+      e2e/            # End-to-end tests (real HTTP, black-box)
+  performance/        # Locust load tests
+  run_all_tests.sh    # Script to run all tests (with server auto-start)
+  requirements.txt    # Python dependencies
+  Readme.md           # This documentation
+```
+
+---
+
+## 3. How to Run Tests
+
+### 3.1. Run all tests (recommended)
+```
+./run_all_tests.sh
+```
+- This script will automatically stop any old server, start a new one, run all tests, and stop the server after completion.
+
+### 3.2. Run manually (by test type)
+
+- **Unit tests:**
+  ```
+  pytest automation/tests/unit
+  ```
+- **Integration tests:**
+  ```
+  pytest automation/tests/integration
+  ```
+- **API/Contract tests:**
+  ```
+  pytest automation/tests/api
+  ```
+- **Mock tests:**
+  ```
+  pytest automation/tests/mocks
+  ```
+- **End-to-end (e2e) tests:**
+  1. Start the FastAPI server:
+     ```
+     uvicorn automation.server.backend:app --reload
+     ```
+  2. In another terminal:
+     ```
+     pytest automation/tests/e2e
+     ```
+- **Performance (load) tests:**
+  1. Install Locust:
+     ```
+     pip install locust
+     ```
+  2. Start the FastAPI server (see above)
+  3. From the project root:
+     ```
+     locust -f performance/test_load_books.py --host=http://127.0.0.1:8000
+     ```
+  4. Open http://localhost:8089 in your browser
+
+---
+
+## 4. Types of Automated Tests
+
+### Unit tests
+- **What they check:** Individual functions, classes, business logic without DB or HTTP calls.
+- **Why they are needed:** Quickly catch logic errors, require no complex environment.
+
+### Integration tests
+- **What they check:** Interaction between application components, FastAPI working with a real DB via httpx.
+- **Why they are needed:** Ensure everything works together as expected.
+
+### API/Contract tests
+- **What they check:** API compliance with the specification (OpenAPI), presence and correctness of endpoints.
+- **Why they are needed:** Guarantee that the external API contract is not broken.
+
+### Mock tests
+- **What they check:** Client logic and error handling using mocked server responses (httpx.MockTransport).
+- **Why they are needed:** Allow testing behavior without a real server or DB, convenient for edge cases.
+
+### End-to-end (e2e) tests
+- **What they check:** The full request path from client to server and back, as in real production.
+- **Why they are needed:** Test the system as a "black box", catch integration bugs.
+
+### Performance (load) tests
+- **What they check:** How the application behaves under load (many users, frequent requests).
+- **Why they are needed:** Help find bottlenecks, check stability and scalability.
+
+---
+
+## 5. Notes
+- All tests can be run from the project root.
+- For integration and e2e tests, make sure the server and DB are available.
+- For performance tests, always start the server separately.
+
+---
+
+**If you have any questions about running or structuring the tests, feel free to ask!**

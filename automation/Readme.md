@@ -37,7 +37,7 @@ It is designed for demonstration, learning, and as a foundation for automated te
 All endpoints are available under the root URL (default: `http://127.0.0.1:8000`).
 
 ### 1. List all books
-**GET /books**
+**GET** <span style="background:yellow">`/books`</span>
 
 - **Response:** JSON array of books
 - **Example curl:**
@@ -46,7 +46,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 2. Add a new book
-**POST /books**
+**POST** <span style="background:yellow">`/books`</span>
 
 - **Body:**
   ```json
@@ -64,7 +64,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 3. Update a book
-**PUT /books/{book_id}**
+**PUT** <span style="background:yellow">`/books/{book_id}`</span>
 
 - **Path parameter:** `book_id` (integer)
 - **Body:** (any of the fields)
@@ -83,7 +83,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 4. Delete a book
-**DELETE /books/{book_id}**
+**DELETE** <span style="background:yellow">`/books/{book_id}`</span>
 
 - **Path parameter:** `book_id` (integer)
 - **Response:** `{ "detail": "Book deleted" }`
@@ -93,7 +93,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 5. List all users
-**GET /users**
+**GET** <span style="background:yellow">`/users`</span>
 
 - **Response:** JSON array of users
 - **Example curl:**
@@ -102,7 +102,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 6. Add a new user
-**POST /users**
+**POST** <span style="background:yellow">`/users`</span>
 
 - **Body:**
   ```json
@@ -119,7 +119,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 7. Borrow a book
-**POST /books/{book_id}/borrow?user_id=...**
+**POST** <span style="background:yellow">`/books/{book_id}/borrow?user_id=...`</span>
 
 - **Path parameter:** `book_id` (integer)
 - **Query parameter:** `user_id` (integer)
@@ -130,7 +130,7 @@ All endpoints are available under the root URL (default: `http://127.0.0.1:8000`
   ```
 
 ### 8. Return a book
-**POST /books/{book_id}/return**
+**POST** <span style="background:yellow">`/books/{book_id}/return`</span>
 
 - **Path parameter:** `book_id` (integer)
 - **Response:** `{ "detail": "Book returned" }` or error

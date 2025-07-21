@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Boolean
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, Session
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, constr
 from typing import List, Optional
 
 DATABASE_URL = "sqlite:///./library.db"
@@ -51,17 +51,15 @@ class BookOut(BaseModel):
     author: str
     is_borrowed: bool
     borrower_id: Optional[int]
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class UserCreate(BaseModel):
-    name: str
+    name: constr(strip_whitespace=True, min_length=1)
 
 class UserOut(BaseModel):
     id: int
     name: str
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 @app.get("/books", response_model=List[BookOut])
 def list_books(db: Session = Depends(get_db)):

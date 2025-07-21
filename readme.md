@@ -155,4 +155,35 @@ By including negative tests for every endpoint and business rule, you can be con
 
 ---
 
+## 7. Code Conventions and Best Practices
+
+This project follows modern Python and testing best practices:
+
+- **PEP 8:** Standard Python style guide (indentation, naming, imports, line length, etc.)
+- **Naming:**
+  - Functions/variables: `snake_case`
+  - Classes: `CamelCase`
+  - Constants: `UPPER_CASE`
+- **Project structure:**
+  - Clear separation of app code, tests, dependencies, and documentation
+  - Use of `__init__.py` for explicit packages
+- **FastAPI/REST conventions:**
+  - HTTP methods used as intended (`GET`, `POST`, `PUT`, `DELETE`)
+  - Explicit error codes/messages via `HTTPException`
+  - Input validation with Pydantic models
+- **Testing:**
+  - Test names: `test_<what_is_tested>`
+  - Arrange-Act-Assert pattern
+  - Negative tests for all endpoints and business rules
+  - Test isolation (DB cleanup via fixtures)
+- **Performance/load:**
+  - Locust for load testing, with realistic user scenarios
+- **Documentation:**
+  - Markdown style, clear sections, curl examples, endpoint highlighting
+  - Explanation of project structure and test types
+
+These conventions ensure code readability, maintainability, and make it easy for any Python developer to contribute or review the project.
+
+---
+
 **If you have any questions about running or structuring the tests, feel free to ask!**

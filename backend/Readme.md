@@ -1,34 +1,39 @@
-# Test Backend Server
+# Backend
 
-This is a lightweight backend server built for a sample library application.  
-It was created specifically for testing purposes to validate the functionality and robustness of the testing system.
+## Project Structure
 
-Feel free to explore, run tests, and adapt it to your needs.
+- `server/backend.py` — main FastAPI app and models
+- `requirements.txt` — dependencies
+- `library.db` — SQLite database
+- `tests/` — all test code (unit, integration, API/contract, mocks, e2e)
 
-## Requirements
-- Python 3.8+
-- FastAPI
-- Uvicorn
-- SQLAlchemy
+## How to Run Tests
 
-## Install dependencies
-```
-pip install -r requirements.txt
-```
+1. **Install dependencies:**
+   ```
+   pip install -r requirements.txt
+   ```
+2. **Run all tests:**
+   ```
+   pytest tests/
+   ```
+3. **Run only a specific type of tests:**
+   ```
+   pytest tests/unit
+   pytest tests/integration
+   pytest tests/api
+   pytest tests/mocks
+   pytest tests/e2e
+   ```
 
-## Run the server
-```
-uvicorn backend.backend:app --reload
-```
+## Test Types
 
-## Main endpoints
-- `GET /books` — get all books
-- `POST /books` — add a new book
-- `PUT /books/{book_id}` — update a book
-- `DELETE /books/{book_id}` — delete a book
-- `GET /users` — get all users
-- `POST /users` — add a new user
-- `POST /books/{book_id}/borrow?user_id=...` — borrow a book for a user
-- `POST /books/{book_id}/return` — return a book
+- **Unit tests:** Test individual functions/classes in isolation (no DB, no FastAPI app).
+- **Integration tests:** Test FastAPI app with real DB, using httpx.AsyncClient + ASGITransport.
+- **API/Contract tests:** Check OpenAPI schema and endpoint compliance.
+- **Mock tests:** Use httpx.MockTransport to test client logic and error handling.
+- **E2E tests:** (Optional) Test the app as a black box, possibly with real HTTP server and DB.
 
-The database is created automatically (SQLite, file `library.db`). 
+---
+
+See the `tests/` directory for examples and details. 

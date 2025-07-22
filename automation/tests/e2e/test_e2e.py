@@ -5,6 +5,7 @@
 import os
 import httpx
 import pytest
+import uuid
 
 BASE_URL = os.getenv("E2E_BASE_URL", "http://127.0.0.1:8000")
 
@@ -27,7 +28,8 @@ def test_e2e_add_book():
 
 
 def test_e2e_add_user():
-    data = {"name": "E2E User"}
+    unique_name = f"E2E_User_{uuid.uuid4().hex}"
+    data = {"name": unique_name}
     response = httpx.post(f"{BASE_URL}/users", json=data)
     assert response.status_code in (200, 201)
     user = response.json()
@@ -36,7 +38,8 @@ def test_e2e_add_user():
 
 def test_e2e_borrow_and_return_book():
     # Add user
-    user_resp = httpx.post(f"{BASE_URL}/users", json={"name": "E2E Borrower"})
+    unique_name = f"E2E_Borrower_{uuid.uuid4().hex}"
+    user_resp = httpx.post(f"{BASE_URL}/users", json={"name": unique_name})
     assert user_resp.status_code in (200, 201)
     user_id = user_resp.json()["id"]
     # Add book

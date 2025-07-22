@@ -17,7 +17,7 @@ The project is designed for educational, interview, and demo purposes. It provid
 
 ### 1.1. Clone the repository
 ```
-git clone <your-repo-url>
+git clone https://github.com/BorderBop/codevalue.git
 cd codevalue
 ```
 

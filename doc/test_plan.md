@@ -130,7 +130,7 @@ Performance testing is conducted using [Locust](https://locust.io/) and covers s
 ---
 
 ## 13. References
-- [Project Readme.md](../Readme.md)
+- [Project Readme.md](../readme.md)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [Pytest Documentation](https://docs.pytest.org/)
 - [Locust Documentation](https://docs.locust.io/) 

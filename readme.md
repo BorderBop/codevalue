@@ -1,4 +1,4 @@
-# Automation Project
+# Performance Engineer Test- CodeValue
 
 ## Overview
 This repository is a demonstration project for automated testing in Python. It implements a simple FastAPI backend and showcases a complete testing strategy, including:

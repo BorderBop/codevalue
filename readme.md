@@ -52,7 +52,8 @@ codevalue/
       mocks/          # Mock tests (httpx.MockTransport, error handling)
       e2e/            # End-to-end tests (real HTTP, black-box)
   performance/        # Locust load tests
-  run_all_tests.sh    # Script to run all tests (with server auto-start)
+  run_all_tests.sh    # Script to run all tests (with server auto-start, Linux/Mac)
+  run_all_tests.bat   # Script to run all tests (with server auto-start, Windows)
   requirements.txt    # Python dependencies
   Readme.md           # This documentation
 ```
@@ -62,10 +63,18 @@ codevalue/
 ## 3. How to Run Tests
 
 ### 3.1. Run all tests (recommended)
+
+#### On Linux/Mac:
 ```
 ./run_all_tests.sh
 ```
 - This script will automatically stop any old server, start a new one, run all tests, and stop the server after completion.
+
+#### On Windows:
+```
+run_all_tests.bat
+```
+- This batch script will do the same for Windows users.
 
 ### 3.2. Run manually (by test type)
 
